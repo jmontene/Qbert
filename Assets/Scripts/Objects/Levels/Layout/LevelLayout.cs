@@ -7,6 +7,8 @@ public class LevelLayout : ScriptableObject {
 	public Vector2 offset;
 	public Vector2Int initialPos;
 	public Vector2Int elevatorTarget;
+	public float spawnRate;
+	public Vector2Int[] spawnPoints;
 	[HideInInspector]
 	public int[][] rows;
 

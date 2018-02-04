@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e0005fd6f06494ba24e030041e33fe, type: 3}
+  m_Name: Basic Spawn Data
+  m_EditorClassIdentifier: 
+  spawnRate: 6
+  spawnOffset: 0.2
+  redBall: {fileID: 114448440141449950, guid: 7b417b3cf0b8b034684e08cc41cea534, type: 2}
+  greenBall: {fileID: 114830957299293508, guid: bab90f99ea905864aaeb34c5e5554d87,
+    type: 2}
+  redBallChance: 0.7

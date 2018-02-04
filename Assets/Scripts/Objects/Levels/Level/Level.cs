@@ -5,19 +5,23 @@ using UnityEngine;
 public class Level : MonoBehaviour {
 
 	public LevelLayout layout;
+	public EnemySpawnData spawnData;
 	public QBertCharacter qbertPrefab;
 
 	[HideInInspector]
 	public Space[][] spaces;
 	QBertCharacter qbert;
+	List<QBertCharacter> currentEnemies;
 
 	// Use this for initialization
 	void Start () {
 		MakeLevel ();
 		qbert = Instantiate (qbertPrefab, transform.position, Quaternion.identity) as QBertCharacter;
-		qbert.Init ();
-		qbert.SetLevel (this);
+		qbert.Init (this);
 		MoveCharacterTo (qbert, layout.initialPos, true);
+		currentEnemies = new List<QBertCharacter> ();
+
+		InvokeRepeating ("SpawnEnemy", spawnData.spawnRate, spawnData.spawnRate);
 	}
 
 	void MakeLevel(){
@@ -37,6 +41,16 @@ public class Level : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	void SpawnEnemy(){
+		QBertCharacter enemy = spawnData.spawnEnemy (this);
+		Vector2Int spawnPoint = layout.spawnPoints [Random.Range (0, layout.spawnPoints.Length)];
+		QBertCharacter e = Instantiate (enemy, spaces [spawnPoint.x] [spawnPoint.y].landingPoint.position + Vector3.up * spawnData.spawnOffset, Quaternion.identity) as QBertCharacter;
+		e.Init (this);
+		currentEnemies.Add (e);
+
+		MoveCharacterTo (e, spawnPoint, false, true);
 	}
 
 	public void MoveCharacterTo(QBertCharacter character, Vector2Int pos, bool teleport = false, bool fall = false){
