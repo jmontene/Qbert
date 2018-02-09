@@ -15,7 +15,7 @@ public class QBert : QBertCharacter {
 	// Update is called once per frame
 	public new void Update () {
 		base.Update ();
-		if (!jumping && listenToInput) {
+		if (canMove) {
 			ProcessInput ();
 		}
 	}

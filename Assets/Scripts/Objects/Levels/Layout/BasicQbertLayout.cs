@@ -16,5 +16,15 @@ public class BasicQbertLayout : LevelLayout {
 			new int [8] { 0, 1, 1, 0, 0, 0, 0, 0 },
 			new int [8] { 0, 1, 0, 0, 0, 0, 0, 0 }
 		};
+
+		bottomPositions = new List<Vector2Int>() {
+			new Vector2Int (7, 1),
+			new Vector2Int (6, 2),
+			new Vector2Int (5, 3),
+			new Vector2Int (4, 4),
+			new Vector2Int (3, 5),
+			new Vector2Int (2, 6),
+			new Vector2Int (1, 7)
+		};
 	}
 }

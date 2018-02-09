@@ -10,8 +10,9 @@ public class Level : MonoBehaviour {
 
 	[HideInInspector]
 	public Space[][] spaces;
-	QBertCharacter qbert;
-	List<QBertCharacter> currentEnemies;
+	public QBertCharacter qbert;
+	[HideInInspector]
+	public List<QBertCharacter> currentEnemies;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,8 @@ public class Level : MonoBehaviour {
 
 	void MakeLevel(){
 		layout.Init ();
+		spawnData.Init ();
+
 		int[][] rows = layout.rows;
 		spaces = new Space[rows.GetLength(0)][];
 
@@ -35,7 +38,7 @@ public class Level : MonoBehaviour {
 				if (rows [i] [j] != 0) {
 					Vector2 newPos = new Vector2 (transform.position.x + j * layout.offset.x - i * layout.offset.x, transform.position.y + j * layout.offset.y + i * layout.offset.y);
 					spaces [i] [j] = Instantiate (layout.availableSpaces [rows [i] [j] - 1], newPos, Quaternion.identity, transform) as Space;
-					spaces [i] [j].Init (this);
+					spaces [i] [j].Init (this, new Vector2Int(i, j));
 				} else {
 					spaces [i] [j] = null;
 				}
@@ -54,23 +57,24 @@ public class Level : MonoBehaviour {
 	}
 
 	public void MoveCharacterTo(QBertCharacter character, Vector2Int pos, bool teleport = false, bool fall = false){
-		Space s;
-		if (pos.x < 0 || pos.x >= spaces.GetLength (0) || pos.y < 0 || pos.y >= spaces [0].Length) {
-			s = null;		
-		} else {
-			s = spaces [pos.x] [pos.y];
-		}
+		Space s = GetSpaceAt (pos);
 		if (s == null) {
 			Debug.LogWarning ("Null space found in level");
 			return;
 		}
 
-		character.levelPos = pos;
-
 		if (teleport) {
 			s.Teleport (character);
 		} else {
 			s.Move (character, fall);
+		}
+	}
+
+	public Space GetSpaceAt(Vector2Int pos){
+		if (pos.x < 0 || pos.x >= spaces.GetLength (0) || pos.y < 0 || pos.y >= spaces [0].Length) {
+			return null;		
+		} else {
+			return spaces [pos.x] [pos.y];
 		}
 	}
 

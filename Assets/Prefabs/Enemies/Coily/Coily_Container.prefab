@@ -19,8 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4706001588342186}
+  - component: {fileID: 114169324762646678}
   m_Layer: 0
-  m_Name: Snake_Container
+  m_Name: Coily_Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4680198100968514}
   - component: {fileID: 212701341322580878}
+  - component: {fileID: 95948866375882878}
   m_Layer: 0
   m_Name: sprite
   m_TagString: Untagged
@@ -49,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1600321887021092}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.119, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4706001588342186}
@@ -62,13 +64,50 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217240373109180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.195, y: 0.729, z: 0.06414635}
+  m_LocalPosition: {x: -0.24424121, y: 0.386, z: 0.06414635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4680198100968514}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95948866375882878
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600321887021092}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 05bfbec2bf29284489addc8cbbebbd57, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114169324762646678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1217240373109180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e048bbe35a1584ba50a6c3d35f809c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpTime: 0.5
+  xDistance: 0.1
+  landTime: 0.5
+  levelPos: {x: 0, y: 0}
+  characterType: 0
+  characterName: 
+  coilyController: {fileID: 22100000, guid: 6036346e408bbc1458368cd93270f38e, type: 2}
+  ballOffset: 0.11
+  qbert: {fileID: 0}
 --- !u!212 &212701341322580878
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -101,9 +140,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 489589829
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300016, guid: a448a48ffdf79974592207a425e4f52c, type: 3}
+  m_Sprite: {fileID: 21300044, guid: a448a48ffdf79974592207a425e4f52c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

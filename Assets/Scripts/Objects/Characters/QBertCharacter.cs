@@ -6,9 +6,11 @@ public class QBertCharacter : MonoBehaviour {
 	public enum CHARACTER_TYPE {PLAYER, ENEMY};
 	public float jumpTime = 1f;
 	public float xDistance = 0.1f;
+	public float landTime = 0f;
 
 	protected Animator anim;
 	protected bool jumping;
+	protected bool canMove;
 	protected Vector2Int dir;
 
 	[HideInInspector]
@@ -18,12 +20,13 @@ public class QBertCharacter : MonoBehaviour {
 	[HideInInspector]
 	public string characterName;
 
-	Level currentLevel;
+	protected Level currentLevel;
 
 	public virtual void Init(Level l){
 		currentLevel = l;
 		anim = GetComponentInChildren<Animator> ();
 		jumping = false;
+		canMove = true;
 		SetAnimatorDirection (0f, -1f);
 	}
 	public virtual void ToggleActions(){}
@@ -41,6 +44,7 @@ public class QBertCharacter : MonoBehaviour {
 	}
 
 	IEnumerator AnimateJumpCo(Space space, Vector3 targetPos, bool fall){
+		canMove = false;
 		jumping = true;
 		float mt = (dir.y == 0 ? 1f : -1f);
 		if (fall) {
@@ -62,12 +66,23 @@ public class QBertCharacter : MonoBehaviour {
 		}
 		transform.position = targetPos;
 		jumping = false;
-		space.OnLanded (this);
+		OnSpaceLand (space);
 	}
 
 	protected void SetAnimatorDirection(float x, float y){
 		anim.SetFloat ("xDir", x);
 		anim.SetFloat ("yDir", y);
 		dir = new Vector2Int ((int)x, (int)y);
+	}
+
+	public virtual void OnSpaceLand(Space s){
+		s.OnLanded (this);
+		levelPos = s.pos;
+		StartCoroutine (WaitToMove ());
+	}
+
+	protected IEnumerator WaitToMove(){
+		yield return new WaitForSeconds (landTime);
+		canMove = true;
 	}
 }

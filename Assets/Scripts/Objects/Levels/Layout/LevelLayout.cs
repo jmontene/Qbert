@@ -11,6 +11,8 @@ public class LevelLayout : ScriptableObject {
 	public Vector2Int[] spawnPoints;
 	[HideInInspector]
 	public int[][] rows;
+	[HideInInspector]
+	public List<Vector2Int> bottomPositions;
 
 	public virtual void Init(){
 		//Initialization functions

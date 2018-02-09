@@ -6,6 +6,11 @@ public class Elevator : Space {
 	public float yOffset = 0.2f;
 	public float arrivalTime = 2f;
 
+	public override void Init(Level l, Vector2Int p){
+		base.Init (l, p);
+		spaceName = "Elevator";
+	}
+
 	public override void OnLanded (QBertCharacter character){
 		if (character.characterType == QBertCharacter.CHARACTER_TYPE.PLAYER) {
 			character.transform.SetParent (transform);

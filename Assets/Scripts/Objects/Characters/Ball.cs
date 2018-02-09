@@ -11,7 +11,11 @@ public class Ball : QBertCharacter {
 
 	public new void Update(){
 		base.Update ();
-		if (!jumping) {
+		BallBehaviour ();
+	}
+
+	protected virtual void BallBehaviour(){
+		if (canMove) {
 			BallMovement ();
 		}
 	}

@@ -5,11 +5,16 @@ using UnityEngine;
 public abstract class Space : MonoBehaviour {
 	[HideInInspector]
 	public Transform landingPoint;
+	[HideInInspector]
+	public string spaceName;
+	[HideInInspector]
+	public Vector2Int pos;
 
 	protected Level level;
 
-	public void Init(Level l){
+	public virtual void Init(Level l, Vector2Int p){
 		level = l;
+		pos = p;
 		landingPoint = transform.Find ("LandingPoint");
 		if (landingPoint == null) {
 			landingPoint = transform;
@@ -22,6 +27,7 @@ public abstract class Space : MonoBehaviour {
 	public abstract void OnLanded (QBertCharacter character);
 
 	public virtual void Teleport(QBertCharacter character){
+		character.levelPos = pos;
 		character.transform.position = landingPoint.position;
 	}
 }

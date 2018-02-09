@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b991b90822fae546ae8a84cb5fef800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpTime: 1
+  jumpTime: 0.5
   xDistance: 0.1
+  landTime: 0.5
   levelPos: {x: 0, y: 0}
   characterType: 0
   characterName: 
