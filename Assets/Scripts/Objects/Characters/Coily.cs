@@ -40,42 +40,44 @@ public class Coily : Ball {
 		List<float> distances = new List<float>();
 		Dictionary<float, Vector2Int> positions = new Dictionary<float, Vector2Int> ();
 
-		Vector2Int down = new Vector2Int (levelPos.x + 1, levelPos.y);
-		Vector2Int up = new Vector2Int (levelPos.x - 1, levelPos.y);
-		Vector2Int right = new Vector2Int (levelPos.x, levelPos.y + 1);
-		Vector2Int left = new Vector2Int (levelPos.x, levelPos.y - 1);
+		Vector2Int down = new Vector2Int (1, 0);
+		Vector2Int up = new Vector2Int (-1, 0);
+		Vector2Int right = new Vector2Int (0, 1);
+		Vector2Int left = new Vector2Int (0, -1);
 
 		float d;
 
-		Space dSpace = currentLevel.GetSpaceAt (down);
+		Space dSpace = currentLevel.GetSpaceAt (levelPos + down);
 		if (dSpace != null && dSpace.spaceName != "Elevator") {
-			d = Vector2Int.Distance (qbertPos, down);
+			d = Vector2Int.Distance (qbertPos, levelPos + down);
 			distances.Add(d);
 			positions [d] = down;
 		}
 
-		Space uSpace = currentLevel.GetSpaceAt (up);
+		Space uSpace = currentLevel.GetSpaceAt (levelPos + up);
 		if (uSpace != null && uSpace.spaceName != "Elevator") {
-			d = Vector2Int.Distance (qbertPos, up);
+			d = Vector2Int.Distance (qbertPos, levelPos + up);
 			distances.Add(d);
 			positions [d] = up;
 		}
 
-		Space rSpace = currentLevel.GetSpaceAt (right);
+		Space rSpace = currentLevel.GetSpaceAt (levelPos + right);
 		if (rSpace != null && rSpace.spaceName != "Elevator") {
-			d = Vector2Int.Distance (qbertPos, right);
+			d = Vector2Int.Distance (qbertPos, levelPos + right);
 			distances.Add(d);
 			positions [d] = right;
 		}
 
-		Space lSpace = currentLevel.GetSpaceAt (left);
+		Space lSpace = currentLevel.GetSpaceAt (levelPos + left);
 		if (lSpace != null && lSpace.spaceName != "Elevator") {
-			d = Vector2Int.Distance (qbertPos, left);
+			d = Vector2Int.Distance (qbertPos, levelPos + left);
 			distances.Add(d);
 			positions [d] = left;
 		}
 
 		float dist = Mathf.Min (distances.ToArray());
-		JumpTo (positions [dist]);
+		Vector2Int finalPos = positions [dist];
+		SetAnimatorDirection (finalPos.y, -finalPos.x);
+		JumpTo (levelPos + finalPos);
 	}
 }

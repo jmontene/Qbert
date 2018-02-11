@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a448a48ffdf79974592207a425e4f52c
-timeCreated: 1518099260
+timeCreated: 1518327247
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -28,6 +28,12 @@ TextureImporter:
     21300042: qbert_idle_up
     21300044: coily_ball_idle
     21300046: coily_ball
+    21300048: coily_right
+    21300050: coily_right_idle
+    21300052: coily_left
+    21300054: coily_left_idle
+    21300056: coily_up
+    21300058: coily_up_idle
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -445,6 +451,90 @@ TextureImporter:
         height: 15
       alignment: 9
       pivot: {x: 0.49398613, y: 0.0068092346}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: coily_right
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 320
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: coily_right_idle
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 320
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: coily_left
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 320
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: coily_left_idle
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 320
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: coily_up
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 320
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: coily_up_idle
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 320
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

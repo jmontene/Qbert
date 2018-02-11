@@ -10,7 +10,11 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	public void OnLeaderboards(){
-		Debug.Log("Leaderboards pressed");
+		SceneManager.LoadScene ("leaderboards");
+	}
+
+	public void OnBackToMain(){
+		SceneManager.LoadScene ("menu");
 	}
 
 	public void OnQuit(){
