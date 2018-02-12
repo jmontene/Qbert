@@ -33,4 +33,20 @@ public class Ball : QBertCharacter {
 				break;
 		}
 	}
+
+	protected virtual void OnQBertCollision(QBert qbert){
+	}
+
+	protected override void OnFallEnded(){
+		currentLevel.RemoveEnemy(this);
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.tag == "Player") {
+			OnQBertCollision (other.gameObject.GetComponent<QBert> ());
+		} else if (other.tag == "Deadzone") {
+			fallFinished = true;
+			OnFallEnded ();
+		}
+	}
 }

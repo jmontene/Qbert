@@ -5,6 +5,7 @@ using UnityEngine;
 public class Coily : Ball {
 
 	public AnimatorOverrideController coilyController;
+	public AudioClip coilyLandClip;
 	public float ballOffset = 0.05f;
 
 	[HideInInspector]
@@ -27,11 +28,23 @@ public class Coily : Ball {
 				born = true;
 				GetComponentInChildren<Animator> ().runtimeAnimatorController = coilyController;
 				transform.Find ("sprite").transform.Translate (Vector2.up * ballOffset);
+				landSFX = coilyLandClip;
 			}
 		} else {
 			if (canMove) {
 				CoilyMovement ();
 			}
+		}
+	}
+
+	protected override void OnFallEnded(){
+		currentLevel.AddScore (500);
+		currentLevel.RemoveEnemy (this);
+	}
+
+	protected override void OnQBertCollision(QBert qbert){
+		if (!qbert.ridingElevator) {
+			currentLevel.KillQBert ();
 		}
 	}
 

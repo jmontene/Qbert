@@ -54,20 +54,42 @@ public class LeaderboardsManager : MonoBehaviour {
 			AddRecord ("AAA", 40);
 			AddRecord ("BBB", 10);
 			AddRecord ("CCC", 100);
+			AddRecord ("AAA", 50);
+			AddRecord ("BBB", 20);
+			AddRecord ("CCC", 200);
+			AddRecord ("AAA", 0);
+			AddRecord ("BBB", 11);
+			AddRecord ("CCC", 300);
 		}
 	}
 
 	public List<LeaderboardRecord> GetSortedRecords(){
-		records.Sort ((x, y) => -(x.score.CompareTo (y.score)));
+		SortRecords ();
 		return records;
+	}
+
+	public bool IsHighScore(int score){
+		if (records.Count < maxAmountOfRecords) {
+			return true;
+		} else {
+			SortRecords ();
+			return records [records.Count - 1].score < score;
+		}
 	}
 
 	public void AddRecord(string name, int score){
 		if (records.Count == maxAmountOfRecords) {
-			records.Sort ((x, y) => -(x.score.CompareTo (y.score)));
-			records [records.Count - 1] = new LeaderboardRecord (name, score);
+			SortRecords ();
+			if (records [records.Count - 1].score < score) {
+				records [records.Count - 1].name = name;
+				records [records.Count - 1].score = score;
+			}
 		} else {
 			records.Add (new LeaderboardRecord (name, score));
 		}
+	}
+
+	void SortRecords(){
+		records.Sort ((x, y) => -(x.score.CompareTo (y.score)));
 	}
 }

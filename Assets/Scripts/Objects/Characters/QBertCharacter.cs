@@ -7,11 +7,18 @@ public class QBertCharacter : MonoBehaviour {
 	public float jumpTime = 1f;
 	public float xDistance = 0.1f;
 	public float landTime = 0f;
+	public float fallSpeed = 0.2f;
+	public string fallLayer;
+
+	public AudioClip landSFX;
+	public AudioClip fallSFX;
 
 	protected Animator anim;
 	protected bool jumping;
-	protected bool canMove;
+	[HideInInspector]
+	public bool canMove;
 	protected Vector2Int dir;
+	protected bool fallFinished = false;
 
 	[HideInInspector]
 	public Vector2Int levelPos;
@@ -78,11 +85,51 @@ public class QBertCharacter : MonoBehaviour {
 	public virtual void OnSpaceLand(Space s){
 		s.OnLanded (this);
 		levelPos = s.pos;
+	}
+
+	public void ReloadMovement(){
 		StartCoroutine (WaitToMove ());
+	}
+
+	public virtual void OnFallStarted(){
+		if (fallSFX != null) {
+			SoundManager.instance.PlaySFX (fallSFX);
+			Invoke ("FinishFall", fallSFX.length + 1f);
+		}
+		GetComponentInChildren<SpriteRenderer> ().sortingLayerName = fallLayer;
+		StartCoroutine (AnimateFallCo ());
+	}
+
+	protected IEnumerator AnimateFallCo(){
+		canMove = false;
+		while (!fallFinished) {
+			transform.Translate (Vector2.down * fallSpeed * Time.deltaTime);
+			yield return null;
+		}
+	}
+
+	protected virtual void OnFallEnded(){
 	}
 
 	protected IEnumerator WaitToMove(){
 		yield return new WaitForSeconds (landTime);
 		canMove = true;
+	}
+
+	void FinishFall(){
+		fallFinished = true;
+		OnFallEnded ();
+		Invoke ("FinishFallEnd", 0.1f);
+	}
+
+	void FinishFallEnd(){
+		fallFinished = false;
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.tag == "Deadzone") {
+			fallFinished = true;
+			OnFallEnded ();
+		}
 	}
 }

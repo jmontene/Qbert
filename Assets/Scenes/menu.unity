@@ -671,7 +671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5392bb78178afc842be86e0e75827063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addDummyData: 1
+  maxAmountOfRecords: 10
+  addDummyData: 0
 --- !u!4 &1582209641
 Transform:
   m_ObjectHideFlags: 0
@@ -790,6 +791,8 @@ MonoBehaviour:
   clipIndex:
   - key: title
     clip: {fileID: 8300000, guid: 1851a794ebc60df4c904edeb1a3cf2d1, type: 3}
+  - key: level_clear
+    clip: {fileID: 8300000, guid: a3d7b7d5ed7ef2146b70c867ac44faa3, type: 3}
 --- !u!4 &1721110139
 Transform:
   m_ObjectHideFlags: 0

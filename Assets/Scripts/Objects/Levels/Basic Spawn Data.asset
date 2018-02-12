@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e0005fd6f06494ba24e030041e33fe, type: 3}
   m_Name: Basic Spawn Data
   m_EditorClassIdentifier: 
-  spawnRate: 6
+  spawnRate: 4
   spawnOffset: 0.2
-  redBall: {fileID: 114448440141449950, guid: 7b417b3cf0b8b034684e08cc41cea534, type: 2}
-  greenBall: {fileID: 114830957299293508, guid: bab90f99ea905864aaeb34c5e5554d87,
+  redBall: {fileID: 114910868128553452, guid: 7b417b3cf0b8b034684e08cc41cea534, type: 2}
+  greenBall: {fileID: 114927967160747502, guid: bab90f99ea905864aaeb34c5e5554d87,
     type: 2}
   coily: {fileID: 114169324762646678, guid: 4021ed22391cfa94c86826a8100b858d, type: 2}
-  redBallChance: 0.7
+  redBallChance: 0.2

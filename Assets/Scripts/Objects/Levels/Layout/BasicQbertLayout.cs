@@ -6,15 +6,16 @@ using UnityEngine;
 public class BasicQbertLayout : LevelLayout {
 
 	public override void Init(){
-		rows = new int[8][] {
-			new int [8] { 0, 0, 0, 0, 0, 2, 0, 0 },
-			new int [8] { 0, 1, 1, 1, 1, 1, 1, 1 },
-			new int [8] { 0, 1, 1, 1, 1, 1, 1, 0 },
-			new int [8] { 0, 1, 1, 1, 1, 1, 0, 0 },
-			new int [8] { 0, 1, 1, 1, 1, 0, 0, 0 },
-			new int [8] { 2, 1, 1, 1, 0, 0, 0, 0 },
-			new int [8] { 0, 1, 1, 0, 0, 0, 0, 0 },
-			new int [8] { 0, 1, 0, 0, 0, 0, 0, 0 }
+		rows = new int[9][] {
+			new int [9] { 0, 0, 0, 0, 0, 2, 0, 0, 0 },
+			new int [9] { 0, 1, 1, 1, 1, 1, 1, 1, 0 },
+			new int [9] { 0, 1, 1, 1, 1, 1, 1, 0, 0  },
+			new int [9] { 0, 1, 1, 1, 1, 1, 0, 0, 0  },
+			new int [9] { 0, 1, 1, 1, 1, 0, 0, 0, 0  },
+			new int [9] { 2, 1, 1, 1, 0, 0, 0, 0, 0  },
+			new int [9] { 0, 1, 1, 0, 0, 0, 0, 0, 0  },
+			new int [9] { 0, 1, 0, 0, 0, 0, 0, 0, 0  },
+			new int [9] { 0, 0, 0, 0, 0, 0, 0, 0, 0  },
 		};
 
 		bottomPositions = new List<Vector2Int>() {

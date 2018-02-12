@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   availableSpaces:
+  - {fileID: 114362035881400684, guid: 9ab564caae85df045984398abee5a4ad, type: 2}
   - {fileID: 114190744718982388, guid: 2d8e6f8f0bdf6594c93d35b2e13a369a, type: 2}
   - {fileID: 114692098545143216, guid: 4f73cc96f308b7b4580cfa17254b923a, type: 2}
   offset: {x: 0.1596, y: -0.2398}
@@ -21,3 +22,11 @@ MonoBehaviour:
   spawnPoints:
   - {x: 2, y: 1}
   - {x: 1, y: 2}
+  bottomPositions:
+  - {x: 7, y: 1}
+  - {x: 6, y: 2}
+  - {x: 5, y: 3}
+  - {x: 4, y: 4}
+  - {x: 3, y: 5}
+  - {x: 2, y: 6}
+  - {x: 1, y: 7}

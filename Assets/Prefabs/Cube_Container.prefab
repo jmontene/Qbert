@@ -111,7 +111,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landingPoint: {fileID: 0}
+  spaceName: 
+  pos: {x: 0, y: 0}
   landedSprite: {fileID: 21300002, guid: a448a48ffdf79974592207a425e4f52c, type: 3}
+  flashSpeed: 0.1
+  flashingSprites:
+  - {fileID: 21300060, guid: a448a48ffdf79974592207a425e4f52c, type: 3}
+  - {fileID: 21300002, guid: a448a48ffdf79974592207a425e4f52c, type: 3}
+  - {fileID: 21300000, guid: a448a48ffdf79974592207a425e4f52c, type: 3}
+  lighted: 0
 --- !u!212 &212235144632016794
 SpriteRenderer:
   m_ObjectHideFlags: 1
