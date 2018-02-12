@@ -5,7 +5,7 @@ using UnityEngine;
 public class RedBall : Ball {
 
 	protected override void OnQBertCollision(QBert qbert){
-		if (!qbert.ridingElevator) {
+		if (!qbert.ridingElevator && qbert.canCollide) {
 			currentLevel.KillQBert ();
 		}
 	}

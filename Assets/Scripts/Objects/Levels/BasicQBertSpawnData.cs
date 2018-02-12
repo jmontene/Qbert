@@ -16,7 +16,6 @@ public class BasicQBertSpawnData : EnemySpawnData {
 	int nextCoilyValue;
 
 	public override QBertCharacter spawnEnemy(Level level){
-		Debug.Log (coilyCounter + " vs " + nextCoilyValue );
 		if (!isCoilyOnLevel(level)) {
 			coilyCounter += 1;
 			if (coilyCounter == nextCoilyValue) {

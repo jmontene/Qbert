@@ -30,16 +30,16 @@ public class QBert : QBertCharacter {
 	}
 
 	void ProcessInput(){
-		if (Input.GetKeyDown (KeyCode.Keypad9)) {
+		if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Keypad9)) {
 			SetAnimatorDirection (0f, 1f);
 			JumpTo (new Vector2Int (levelPos.x - 1, levelPos.y));
-		} else if (Input.GetKeyDown (KeyCode.Keypad1)) {
+		} else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.Keypad1)) {
 			SetAnimatorDirection (0f, -1f);
 			JumpTo (new Vector2Int (levelPos.x + 1, levelPos.y));
-		}else if (Input.GetKeyDown (KeyCode.Keypad7)) {
+		}else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.Keypad7)) {
 			SetAnimatorDirection (-1f, 0f);
 			JumpTo (new Vector2Int (levelPos.x, levelPos.y - 1));
-		} else if (Input.GetKeyDown (KeyCode.Keypad3)) {
+		} else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.Keypad3)) {
 			SetAnimatorDirection (1f, 0f);
 			JumpTo (new Vector2Int (levelPos.x, levelPos.y + 1));
 		}
@@ -50,6 +50,7 @@ public class QBert : QBertCharacter {
 	}
 
 	protected override void OnFallEnded(){
+		canCollide = true;
 		mainRenderer.sortingLayerName = "Actors";
 		currentLevel.OnQBertFallEnd ();
 		canMove = true;

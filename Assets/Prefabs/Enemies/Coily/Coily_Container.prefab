@@ -152,7 +152,7 @@ MonoBehaviour:
   fallSpeed: 1
   fallLayer: Default
   landSFX: {fileID: 8300000, guid: 56e97675a86988c43abd5beee6cf6e90, type: 3}
-  fallSFX: {fileID: 0}
+  fallSFX: {fileID: 8300000, guid: f17389a1edf263343890bf1f635903b0, type: 3}
   canMove: 0
   levelPos: {x: 0, y: 0}
   characterType: 0

@@ -20,6 +20,10 @@ public class Coily : Ball {
 	}
 
 	protected override void BallBehaviour(){
+		if (frozen) {
+			return;
+		}
+
 		if (!born) {
 			if (canMove) {
 				BallMovement ();
@@ -38,17 +42,19 @@ public class Coily : Ball {
 	}
 
 	protected override void OnFallEnded(){
+		canCollide = true;
 		currentLevel.AddScore (500);
 		currentLevel.RemoveEnemy (this);
 	}
 
 	protected override void OnQBertCollision(QBert qbert){
-		if (!qbert.ridingElevator) {
+		if (!qbert.ridingElevator && qbert.canCollide) {
 			currentLevel.KillQBert ();
 		}
 	}
 
 	protected void CoilyMovement(){
+
 		Vector2Int qbertPos = qbert.levelPos;
 		List<float> distances = new List<float>();
 		Dictionary<float, Vector2Int> positions = new Dictionary<float, Vector2Int> ();
@@ -61,28 +67,28 @@ public class Coily : Ball {
 		float d;
 
 		Space dSpace = currentLevel.GetSpaceAt (levelPos + down);
-		if (dSpace != null && dSpace.spaceName != "Elevator") {
+		if (dSpace != null && dSpace.spaceName != "Elevator" && dSpace.spaceName != "EmptySpace") {
 			d = Vector2Int.Distance (qbertPos, levelPos + down);
 			distances.Add(d);
 			positions [d] = down;
 		}
 
 		Space uSpace = currentLevel.GetSpaceAt (levelPos + up);
-		if (uSpace != null && uSpace.spaceName != "Elevator") {
+		if (uSpace != null && uSpace.spaceName != "Elevator" && uSpace.spaceName != "EmptySpace") {
 			d = Vector2Int.Distance (qbertPos, levelPos + up);
 			distances.Add(d);
 			positions [d] = up;
 		}
 
 		Space rSpace = currentLevel.GetSpaceAt (levelPos + right);
-		if (rSpace != null && rSpace.spaceName != "Elevator") {
+		if (rSpace != null && rSpace.spaceName != "Elevator" && rSpace.spaceName != "EmptySpace") {
 			d = Vector2Int.Distance (qbertPos, levelPos + right);
 			distances.Add(d);
 			positions [d] = right;
 		}
 
 		Space lSpace = currentLevel.GetSpaceAt (levelPos + left);
-		if (lSpace != null && lSpace.spaceName != "Elevator") {
+		if (lSpace != null && lSpace.spaceName != "Elevator" && lSpace.spaceName != "EmptySpace") {
 			d = Vector2Int.Distance (qbertPos, levelPos + left);
 			distances.Add(d);
 			positions [d] = left;

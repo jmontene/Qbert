@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
 
 	public void QuitGame(){
 		Time.timeScale = 1f;
+		LeaderboardsManager.instance.SaveRecords ();
 		SceneManager.LoadScene ("menu");
 	}
 

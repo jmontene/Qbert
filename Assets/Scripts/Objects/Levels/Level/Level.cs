@@ -109,11 +109,11 @@ public class Level : MonoBehaviour {
 	}
 
 	IEnumerator OnGreenBallCo(){
-		//currentEnemies.ForEach ((e) => e.canMove = false);
+		currentEnemies.ForEach ((e) => e.frozen = true);
 		CancelInvoke ();
 		yield return new WaitForSeconds (2f);
 		InvokeRepeating ("SpawnEnemy", spawnData.spawnRate, spawnData.spawnRate);
-		//currentEnemies.ForEach ((e) => e.canMove = true);
+		currentEnemies.ForEach ((e) => e.frozen = false);
 	}
 
 	void InitQBert(){
@@ -149,6 +149,7 @@ public class Level : MonoBehaviour {
 		if (LeaderboardsManager.instance.IsHighScore (gameManager.score)) {
 			gameManager.ShowHighScoreWindow ();
 		} else {
+			LeaderboardsManager.instance.SaveRecords ();
 			SceneManager.LoadScene ("menu");
 		}
 	}

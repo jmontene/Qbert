@@ -17,6 +17,10 @@ public class QBertCharacter : MonoBehaviour {
 	protected bool jumping;
 	[HideInInspector]
 	public bool canMove;
+	[HideInInspector]
+	public bool frozen;
+	[HideInInspector]
+	public bool canCollide;
 	protected Vector2Int dir;
 	protected bool fallFinished = false;
 
@@ -30,6 +34,8 @@ public class QBertCharacter : MonoBehaviour {
 	protected Level currentLevel;
 
 	public virtual void Init(Level l){
+		canCollide = true;
+		frozen = false;
 		currentLevel = l;
 		anim = GetComponentInChildren<Animator> ();
 		jumping = false;
@@ -60,6 +66,10 @@ public class QBertCharacter : MonoBehaviour {
 		Vector3 origPos = transform.position;
 		float t = 0f;
 		while (t < jumpTime) {
+			if (frozen) {
+				yield return null;
+				continue;
+			}
 			t += Time.deltaTime;
 			float p = t / jumpTime;
 			transform.position = Vector3.Lerp (origPos, targetPos, p);
@@ -92,6 +102,7 @@ public class QBertCharacter : MonoBehaviour {
 	}
 
 	public virtual void OnFallStarted(){
+		canCollide = false;
 		if (fallSFX != null) {
 			SoundManager.instance.PlaySFX (fallSFX);
 			Invoke ("FinishFall", fallSFX.length + 1f);
@@ -103,6 +114,10 @@ public class QBertCharacter : MonoBehaviour {
 	protected IEnumerator AnimateFallCo(){
 		canMove = false;
 		while (!fallFinished) {
+			if (frozen) {
+				yield return null;
+				continue;
+			}
 			transform.Translate (Vector2.down * fallSpeed * Time.deltaTime);
 			yield return null;
 		}

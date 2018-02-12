@@ -80,7 +80,7 @@ public class SoundManager : MonoBehaviour {
     {
         AudioClip cl;
         bgms.TryGetValue(key, out cl);
-        if (cl == null)
+        if (key != "" && cl == null)
         {
             Debug.LogWarning("Undefined key '" + key + "' requested to SoundManager");
         }

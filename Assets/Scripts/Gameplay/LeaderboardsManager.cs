@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 using UnityEngine;
 
 public class LeaderboardsManager : MonoBehaviour {
 
+	[System.Serializable]
 	public class LeaderboardRecord{
 		public string name;
 		public int score;
@@ -49,8 +52,9 @@ public class LeaderboardsManager : MonoBehaviour {
 			DontDestroyOnLoad (this);
 		}
 		records = new List<LeaderboardRecord> ();
+		bool recordsLoaded = LoadRecords ();
 
-		if (addDummyData) {
+		if (!recordsLoaded && addDummyData) {
 			AddRecord ("AAA", 40);
 			AddRecord ("BBB", 10);
 			AddRecord ("CCC", 100);
@@ -86,6 +90,27 @@ public class LeaderboardsManager : MonoBehaviour {
 			}
 		} else {
 			records.Add (new LeaderboardRecord (name, score));
+		}
+	}
+
+	public void SaveRecords(){
+		BinaryFormatter bf = new BinaryFormatter ();
+		FileStream file = File.Open (Application.persistentDataPath + "/leaderboards.dat", FileMode.OpenOrCreate);
+		bf.Serialize (file, records);
+		file.Close ();
+	}
+
+	bool LoadRecords(){
+		if (File.Exists (Application.persistentDataPath + "/leaderboards.dat")) {
+			BinaryFormatter bf = new BinaryFormatter ();
+			FileStream file = File.Open (Application.persistentDataPath + "/leaderboards.dat", FileMode.Open);
+			records = (List<LeaderboardRecord>)bf.Deserialize (file);
+			file.Close ();
+			Debug.Log ("Records loaded");
+			return true;
+		} else {
+			Debug.Log ("Records not loaded");
+			return false;
 		}
 	}
 

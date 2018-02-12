@@ -15,7 +15,7 @@ public class Ball : QBertCharacter {
 	}
 
 	protected virtual void BallBehaviour(){
-		if (canMove) {
+		if (!frozen && canMove) {
 			BallMovement ();
 		}
 	}
