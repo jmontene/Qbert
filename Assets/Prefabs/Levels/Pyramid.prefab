@@ -51,5 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ea6d7732f466a4494b60bdd185fadb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layout: {fileID: 11400000, guid: 7ea1856230726664186da03f413ea24f, type: 2}
-  offset: {x: 0, y: 0}
+  layout: {fileID: 0}
+  spawnData: {fileID: 0}
+  qbertPrefab: {fileID: 0}
+  gameManager: {fileID: 0}
+  victoryWait: 3
+  defeatWait: 2
+  qbert: {fileID: 0}
+  currentEnemies: []

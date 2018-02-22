@@ -17,4 +17,4 @@ MonoBehaviour:
   greenBall: {fileID: 114927967160747502, guid: bab90f99ea905864aaeb34c5e5554d87,
     type: 2}
   coily: {fileID: 114169324762646678, guid: 4021ed22391cfa94c86826a8100b858d, type: 2}
-  redBallChance: 0.7
+  redBallChance: 0.8
